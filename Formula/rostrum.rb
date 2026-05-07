@@ -1,26 +1,16 @@
 class Rostrum < Formula
+  include Language::Python::Shebang
+
   desc "Global git worktree switchboard"
   homepage "https://github.com/fridiculous/rostrum"
-  version "0.1.0"
+  url "https://static.crates.io/crates/rostrum-cli/rostrum-cli-0.1.0.crate"
+  sha256 "d624fae2770300abc1bf1fa9f19fb460b48411d00789bd1202c417b9fe76602c"
   license "MIT"
 
-  on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/fridiculous/rostrum/releases/download/v0.1.0/rostrum-aarch64-apple-darwin.tar.gz"
-      sha256 "REPLACE_WITH_AARCH64_APPLE_DARWIN_SHA256"
-    else
-      url "https://github.com/fridiculous/rostrum/releases/download/v0.1.0/rostrum-x86_64-apple-darwin.tar.gz"
-      sha256 "REPLACE_WITH_X86_64_APPLE_DARWIN_SHA256"
-    end
-  end
-
-  on_linux do
-    url "https://github.com/fridiculous/rostrum/releases/download/v0.1.0/rostrum-x86_64-unknown-linux-gnu.tar.gz"
-    sha256 "REPLACE_WITH_X86_64_UNKNOWN_LINUX_GNU_SHA256"
-  end
+  depends_on "rust" => :build
 
   def install
-    bin.install Dir["rsm-*"][0] => "rsm"
+    system "cargo", "install", *std_cargo_args(path: ".")
   end
 
   test do
