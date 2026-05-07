@@ -1,11 +1,10 @@
 class Rostrum < Formula
-  include Language::Python::Shebang
-
   desc "Global git worktree switchboard"
   homepage "https://github.com/fridiculous/rostrum"
-  url "https://static.crates.io/crates/rostrum-cli/rostrum-cli-0.1.0.crate"
-  sha256 "d624fae2770300abc1bf1fa9f19fb460b48411d00789bd1202c417b9fe76602c"
+  url "https://github.com/fridiculous/rostrum/archive/refs/heads/main.tar.gz"
+  sha256 "a83a80039d4290bd2b6b354171945e06f6323be459340dcb6b9027cb46bb7b1d"
   license "MIT"
+  head "https://github.com/fridiculous/rostrum.git", branch: "main"
 
   depends_on "rust" => :build
 
